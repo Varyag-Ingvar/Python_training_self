@@ -1,0 +1,4 @@
+# ignore catalog venv and .idea and Netology
+venv/
+Netology/
+.idea/

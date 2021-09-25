@@ -1,0 +1,10 @@
+Showroom 1
+2
+KIA | red  | 3
+LADA | blue | 2
+
+Showroom 2
+3
+BMW | red | 1
+AUDI | blue | 1
+KIA | green | 3
