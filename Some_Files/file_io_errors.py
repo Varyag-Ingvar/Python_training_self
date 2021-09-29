@@ -28,10 +28,37 @@ def get_data(file_name):
                 # car = file.readline()   # присваиваем переменной car каждую строку с машинами в каждом салоне
                 name, color, quantity = file_1.readline().split('|') # множественным присвоением записываем название, цвет, количество в переменные и сплитуем строку в список с разделителем |
                 temp_list.append(
-                    {'Car_name': name, 'color': color, 'quantity': quantity}
+                    {'car_name': name.strip(), 'color': color, 'quantity': quantity}
                 )
+                # важно для домашки тут .strip() после name
             data_1[shop_name] = temp_list # записываем в словарь data в виде: ключи - название салона, значения - списки словарей вида {'Car_name': name, 'color': color, 'quantity': quantity}
             file_1.readline()             # !берем строку с пробелом в файле между салонами, чтобы избежать ошибки, иначе первый цикл натыкается на пробел (и не сможет привести пробел к целому числу)!
     return data_1
 
 pprint(get_data('api.txt'))
+
+
+def find_by_name(car_name, data):
+    for shop in data.values():
+        for car in shop:
+            if car['car_name'] == car_name:
+                print(f'car {car_name} is in stock')
+
+find_by_name('KIA', get_data('api.txt'))
+print('')
+
+data_2 = get_data('api.txt')
+# data_3 = data_2['Salon']     # специально вызываем ошибку KeyError (такого ключа - Salon в нашем словаре нет)
+# pprint(data_3)
+
+try:
+    data_3 = data_2['Salon']   # ловим ошибку
+except KeyError:
+    print('No such key!')
+
+print('')
+
+try:
+    12/0
+except Exception as error:  # при использовании Exception в принте выдаст название ошибки
+    print(error)

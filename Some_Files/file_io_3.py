@@ -1,5 +1,3 @@
-from pprint import pprint
-
 with open('api.txt') as file:
     data = file.read()        # информация из файла сохраняется в переменной data в виде строки
     print(data, '\n')
@@ -34,4 +32,34 @@ def get_data(file_name):
             file_1.readline()             # !берем строку с пробелом в файле между салонами, чтобы избежать ошибки, иначе первый цикл натыкается на пробел (и не сможет привести пробел к целому числу)!
     return data_1
 
-pprint(get_data('api.txt'))
+# print(get_data('api.txt'))
+
+# РЕЖИМЫ доступа к файлам:
+# 'r' - read (by default)
+# 'w' - write (rewrite the whole file)
+# 'a' - write info in the end of file (дозапись в конец файла)
+
+# РЕЖИМЫ чтения/записи
+# 'b' - двоичный режим
+# 't' - текстовый режим (по умолчанию)
+
+def read_data(file_name):               # функция открывает файл для чтения
+    with open(file_name, 'r') as file:
+        data = file.read()
+        return data
+
+# def write_data(file_name, text):   # функция записи в файл, информация в файле полностью перезапишется при вызове функции
+#     with open(file_name, 'w') as file:
+#         file.write(text)
+
+def write_to_data(file_name, mode, text):   # функция ДОзаписи в файл, информация в файле ДОзапишется при вызове функции
+    with open(file_name, f'{mode}') as file:
+        file.write(f'{text} \n')
+
+# write_data('file.txt', 'Hello, Java')
+# print(read_data('file.txt'))
+
+write_to_data('file.txt', 'a', 'Hello, Python')
+print(read_data('file.txt'))
+
+# на примере, описанном в этом файле, функции работают лишь с файлами, которые находятся в том же каталоге(папке), что и сам этот файл(с нашим кодом)
