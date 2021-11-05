@@ -12,7 +12,7 @@
 #     d['b'] = 1
 # print(d)
 
-# ниже прога для подсчета введенных пользователем символов (букв, цифр, знаков) в виде словаря
+# ниже скрипт для подсчета введенных пользователем символов (букв, цифр, знаков) в виде словаря
 s = input("Let's count how many times you enter the same letter or symbol:\n")
 d = {}
 for i in s:
@@ -31,10 +31,12 @@ for i in sorted(d):
 # или выводит слово и его перевод, если таковые уже в ней были записаны
 words = {}
 while True:
-    k = input("Введите англ.слово, которое хотите перевести: ")
+    k = input("Введите англ.слово, которое хотите перевести (or type 'exit' to exit the program): ")
+    if k == 'exit':
+        break
     if k in words:
         print(f"Слово '{k}' переводится как '{words[k]}'")
     else:
         print(f"Введите перевод слова {k}: ")
         words[k] = input()
-        break
+
